@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import PropTypes from "prop-types";
 import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
 import lovesvg2 from "./assets/Love In The Air SVG Cut File.svg";
 
@@ -347,6 +348,18 @@ const FloatingHearts = ({ hearts }) => {
   );
 };
 
+FloatingHearts.propTypes = {
+  hearts: PropTypes.arrayOf(
+    PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      size: PropTypes.number.isRequired,
+      left: PropTypes.string.isRequired,
+      top: PropTypes.string.isRequired,
+      duration: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
 const FireworksCanvas = ({ onComplete }) => {
   const canvasRef = useRef(null);
   const completedRef = useRef(false);
@@ -456,4 +469,8 @@ const FireworksCanvas = ({ onComplete }) => {
       className="absolute inset-0 z-20 pointer-events-none"
     />
   );
+};
+
+FireworksCanvas.propTypes = {
+  onComplete: PropTypes.func,
 };
