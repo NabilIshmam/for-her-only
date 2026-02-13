@@ -82,7 +82,6 @@ export default function Page() {
     setNow(new Date());
     if (audioRef.current) {
       audioRef.current.muted = true;
-      audioRef.current.load();
     }
     fadeInAudio();
   }, []);
@@ -314,13 +313,15 @@ export default function Page() {
         />
       )}
 
-      <audio
+      <video
         ref={audioRef}
         src="/blue.mp4"
         preload="auto"
         autoPlay
         muted
         playsInline
+        loop
+        className="hidden"
       />
     </div>
   );
